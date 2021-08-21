@@ -11,4 +11,5 @@ for line in sys.stdin:
     for word in words:
         # write the results to STDOUT (standard output);
         # this code was modified by Rupesh
+        #now this code has to be verified by binesh jose
         print (word)
