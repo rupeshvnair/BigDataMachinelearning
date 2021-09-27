@@ -17,7 +17,7 @@ math = data['Math'].values
 read = data['Reading'].values
 write = data['Writing'].values
 
-
+"""
 
 # Ploting the scores as scatter plot
 fig = plt.figure()
@@ -52,7 +52,7 @@ print("inital_cost:",inital_cost)
 def gradient_descent(X, Y, B, alpha, iterations):
     cost_history = [0] * iterations
     m = len(Y)
-    
+
     for iteration in range(iterations):
         # Hypothesis Values
         h = X.dot(B)
@@ -65,7 +65,7 @@ def gradient_descent(X, Y, B, alpha, iterations):
         # New Cost Value
         cost = cost_function(X, Y, B)
         cost_history[iteration] = cost
-        
+
     return B, cost_history
 
 # Now we will compute final value of β
@@ -128,6 +128,3 @@ print(rmse)
 print(r2)
 
 """
-
-
-

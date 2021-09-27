@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 plt.rcParams['figure.figsize'] = (20.0, 10.0)
 
 # Reading Data
-data = pd.read_csv('headbrain.csv')
+data = pd.read_csv('C:/Users/Sreerupu/Desktop/Rupesh/MBA Classes/Semester 3/Subjects/devenv/devproj/BigDataMachinelearning/headbrain.csv')
 print(data.shape)
 print (data.head())
 
@@ -19,7 +19,7 @@ Y = data['Brain Weight(grams)'].values
 m = len(X)
 
 
-
+"""
 # Mean X and Y
 mean_x = np.mean(X)
 mean_y = np.mean(Y)
@@ -94,21 +94,20 @@ from sklearn.linear_model import LinearRegression
 from sklearn.metrics import mean_squared_error
 
 # Cannot use Rank 1 matrix in scikit learn
-X = X.reshape((m, 1))
+X = np.array([X]).T
+Y = np.array(Y)
+
 # Creating Model
-reg = LinearRegression()
+model = LinearRegression()
 # Fitting training data
-reg = reg.fit(X, Y)
+reg_model = model.fit(X, Y)
 # Y Prediction
-Y_pred = reg.predict(X)
+Y_pred = reg_model.predict(X)
 
 # Calculating RMSE and R2 Score
 mse = mean_squared_error(Y, Y_pred)
 rmse = np.sqrt(mse)
-r2_score = reg.score(X, Y)
+r2_score = reg_model.score(X, Y)
 
-print(np.sqrt(mse))
+print(rmse)
 print(r2_score)
-
-
-"""
