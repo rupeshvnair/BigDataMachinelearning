@@ -3,6 +3,9 @@ import pandas as pd
 # so the below command is used to store it to a dataframe
 df_1 = pd.read_csv("C:/Users/Sreerupu/Desktop/Rupesh/MBA Classes/Semester 3/Subjects/MSL/Python code/input.csv")
 
+df_2 = df_1["Unnamed: 0"]
+
+
 #the column with names of rows is removed as it is not required
 df_1 = df_1.drop(labels="Unnamed: 0",axis = 1)
 
@@ -40,7 +43,7 @@ a = 100000000000000
 #mincost is the variable used to define the cost with the minimum variable
 #this variable is appended with the values of minimum variable and serves as output
 mincost =0
-
+route = {}
 #A while loop is set with the condition to stop the loop when the row total and coloumn total becomes zero
 
 while (max(rowtotal.values())!=0) and (max(coltotal.values())!=0):
@@ -70,14 +73,21 @@ while (max(rowtotal.values())!=0) and (max(coltotal.values())!=0):
     if coltotal[col] < rowtotal[row]:
         rowtotal[row]=rowtotal[row]-coltotal[col]
         mincost= mincost + a *coltotal[col]
+        route[df_2[row],col]=a,coltotal[col],a *coltotal[col]
+        #the route dictionary stores the quantity that will be supplied from each warehouse
         coltotal[col]=0
         a = 100000000000000
     else:
         coltotal[col]=coltotal[col]-rowtotal[row]
         mincost= mincost + a *rowtotal[row]
+        route[df_2[row], col]=a,rowtotal[row], a *rowtotal[row]
         rowtotal[row]=0
         a = 100000000000000
 
 #the minimum cost variable is then printed
+print("The cost will be in the form",route)
 print("The Solution of the problem using Least Cost Method is",mincost)
+
+
+
 
